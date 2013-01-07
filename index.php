@@ -10,16 +10,27 @@ $loader = new UniversalClassLoader();
 
 $loader->registerNamespaces(array(
     'Finder' => __DIR__,
-    'Common' => __DIR__
+    'Common' => __DIR__,
+    'Driver' => __DIR__
 ));
 
 $loader->register();
 
 use Finder\Parser;
+use Drivers\Init;
 
 try {
-	$parser = new Parser;
-	$parser->handle();
+	// Парсинг страницы
+	//$parser = new Parser;
+	//$parser->handle();
+
+	// добавляем на сайт
+	$driver  = new Init('WordPress');
+	$handler = $driver->getHandlerDriver();
+
+	$handler->createCategories();
+	$handler->createPosts();
+
 } catch( \Exception $e) {
 	echo $e->getMessage();
 }
