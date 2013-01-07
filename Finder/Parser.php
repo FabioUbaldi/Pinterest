@@ -48,7 +48,6 @@ class Parser {
 		* Должен вернуть массив, типа:
 		* array( 'name' => 'Humor', 'link' => '/all/?category=humor' )
 		*/
-
 		$cats = $scamper->loadCategories( $catNode, $parseCategory['exceptions']->name  );
 
 		
@@ -56,7 +55,7 @@ class Parser {
 		$writer
 			->writeArray($cats, 'category')
 			->create();
-
+		
 		// подгружаем картинки из категорий
 		foreach( $cats as $cat ) {
 			$url = preg_replace("#/$#", "", $site) . $cat['link'];
@@ -72,7 +71,7 @@ class Parser {
 					'<?xml version="1.0" encoding="UTF-8"?><no_empty/>'
 				);
 			}
-			echo "Resource/Categories/" . $cat['file_name'] . PHP_EOL;
+
 			// создаем массив для сравнения
 			$compFile   = new Reader("Categories/" . $cat['file_name']);
 			$comparison = $this->createComparison( $compFile->get('container'), 'small_image' );
@@ -84,20 +83,16 @@ class Parser {
 					}
 				}
 				$content = $this->clearCache($comparison['to_write']);
+			} else {
+				$content = array_slice($content, 0, (int)$this->config->get('max_cache'));
 			}
 
 			$wr = new Writer( 'Categories/' . $cat['file_name'] );
+			
 			$wr
 				->writeArray($content, 'container')
 				->create();
-
 		}
-
-		/*
-		echo '<pre>';
-		$ga = new Reader('Categories/animals.xml');
-		print_r($ga->get('container'));
-		*/
 	}
 
 	/**

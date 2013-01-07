@@ -48,7 +48,7 @@ class Writer {
 		if (is_file($this->resource) && !is_writable($this->resource)) {
 			throw new \Exception( sprintf("I cannot write to <b>%s</b>", $this->resource) );
 		}
-		
+
 		return file_put_contents($this->resource, $this->xml->asXml());
 
 	}
@@ -67,6 +67,7 @@ class Writer {
 				$newNode[0] = $v;
 			}
 		}
+
 		return $this;
 	}
 

@@ -20,9 +20,10 @@ use Finder\Parser;
 use Drivers\Init;
 
 try {
+
 	// Парсинг страницы
-	//$parser = new Parser;
-	//$parser->handle();
+	$parser = new Parser;
+	$parser->handle();
 
 	// добавляем на сайт
 	$driver  = new Init('WordPress');

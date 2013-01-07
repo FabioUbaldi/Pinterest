@@ -13,6 +13,10 @@
 
 		</includes>
 
+		<copy_image>
+			<real_path>../wp-content/themes/twentyeleven/images/parse/</real_path>
+			<web_path>wp-content/themes/twentyeleven/images/parse/</web_path>
+		</copy_image>
 
 	</WordPress>
 </drivers>
