@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drivers>
+	<WordPress>
+
+		<includes>
+			<file>../wp-config.php</file>
+			<file>../wp-includes/functions.php</file>
+			<file>../wp-includes/plugin.php</file>
+			<file>../wp-includes/category.php</file>
+			<file>../wp-includes/post.php</file>
+			<file>../wp-includes/formatting.php</file>
+			<file>../wp-admin/includes/taxonomy.php</file>
+
+		</includes>
+
+
+	</WordPress>
+</drivers>
